@@ -30,9 +30,11 @@
     /* ESEMPIO FUNZIONAMENTO ->  FINE */
 
     let data;
+    let dati=[];
+    let timestamp=[];
 
     function createGraphic() {
-        showLoading("Attendere il caricamento del grafico");
+        //showLoading("Attendere il caricamento del grafico");
 
         //let a = parseInt(state.minutes);
         let params = getFormData();
@@ -47,7 +49,11 @@
             .then((result) => {
                 if (result.response_code === 200) {
                     data = result.result;
-                    console.log(data);
+                    
+                    for (let i=0;i<data.length;i++){
+                        dati.push(data[i].o3);
+                        timestamp.push(data[i].timestamp);
+                    }
                 } else {
                     showError("Problema con la route");
                 }
@@ -57,16 +63,10 @@
     let chartData;
     import { onMount } from "svelte";
 
-    let chartValues = [20, 10, 5, 2, 20, 30, 45];
-    let chartLabels = [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-    ];
+    createGraphic();
+
+    let chartValues = dati;
+    let chartLabels = timestamp;
     let ctx;
     let chartCanvas;
 
@@ -80,8 +80,8 @@
                     {
                         label: "Revenue",
                         data: chartValues,
-                        borderColor: "rgb(0, 51, 153)",
-                        backgroundColor: "rgb(30, 144, 255)",
+                        borderColor: "rgb(54, 162, 235)",
+                        backgroundColor: "rgb(54, 162, 235)",
                         fill: true,
                         
                     },
