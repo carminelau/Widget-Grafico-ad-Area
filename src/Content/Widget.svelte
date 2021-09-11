@@ -13,12 +13,13 @@
     export let WIDGET_VISIBLE = false;
     /* NON MODIFICARE -> FINE */
 
+    import { SlideGroup, SlideItem } from "svelte-materialify";
+    import Carousel from "svelte-carousel";
+    import chartjs from "chart.js/auto";
+    import { getRelativePosition } from "chart.js/helpers";
+
     let canvas;
     showOptions_();
-
-    import chartjs from "chart.js/auto";
-    //import Utils from "chart.js/types";
-    import { getRelativePosition } from "chart.js/helpers";
 
     console.log(state);
 
@@ -30,14 +31,15 @@
     /* ESEMPIO FUNZIONAMENTO ->  FINE */
 
     let data;
-    let dati=[];
-    let timestamp=[];
+    let dati = [];
+    let timestamp = [];
 
     function createGraphic() {
         //showLoading("Attendere il caricamento del grafico");
 
         //let a = parseInt(state.minutes);
         let params = getFormData();
+
         params.append("id", state.sensor);
         params.append("minuti", state.minutes);
 
@@ -49,13 +51,12 @@
             .then((result) => {
                 if (result.response_code === 200) {
                     data = result.result;
-                    
-                    for (let i=0;i<data.length;i++){
-                        dati.push(data[i].o3);
-                        timestamp.push(data[i].timestamp);
+
+                    for (let i = 0; i < data.length; i++) {
+                        const array = data[i].timestamp.split(" ");
+                        //dati.push(data[i].o3);
+                        timestamp.push(array[4]);
                     }
-                } else {
-                    showError("Problema con la route");
                 }
             });
     }
@@ -65,7 +66,26 @@
 
     createGraphic();
 
-    let chartValues = dati;
+    let chartValues = [
+        "0",
+        "0",
+        "0",
+        "20",
+        "50",
+        "70",
+        "80",
+        "100",
+        "130",
+        "200",
+        "170",
+        "150",
+        "120",
+        "80",
+        "50",
+        "0",
+    ];
+    //let chartLabels=["1","2","3"];
+    //let chartValues = dati;
     let chartLabels = timestamp;
     let ctx;
     let chartCanvas;
@@ -78,12 +98,11 @@
                 labels: chartLabels,
                 datasets: [
                     {
-                        label: "Revenue",
+                        label: "Ozone",
                         data: chartValues,
                         borderColor: "rgb(54, 162, 235)",
-                        backgroundColor: "rgb(54, 162, 235)",
+                        backgroundColor: "rgba(54, 162, 235,0.5)",
                         fill: true,
-                        
                     },
                 ],
             },
@@ -94,9 +113,7 @@
                     },
                     title: {
                         display: true,
-                        text: (ctx) =>
-                            "drawTime: " +
-                            ctx.chart.options.plugins.filler.drawTime,
+                        text: (ctx) => "Grafico ad Area",
                     },
                 },
                 pointBackgroundColor: "#fff",
@@ -104,15 +121,27 @@
                 interaction: {
                     intersect: false,
                 },
+                elements: {
+                    line: {
+                        tension: 0.5,
+                    },
+                },
             },
         });
     });
 </script>
 
 <main id="widget-container" style={WIDGET_VISIBLE ? "" : "display: none"}>
-    <!--<Button on:click={() => createGraphic()}>Crea Grafico</Button> -->
-
     <canvas bind:this={chartCanvas} id="myChart" />
+    <br />
 
-    <!-- ESEMPIO FUNZIONAMENTO ->  FINE -->
+        <SlideGroup centerActive activeClass="white-text" >
+          {#each Array(3) as _, i}
+            <SlideItem let:active>
+              <Button class="mr-2 ml-2 {active ? 'primary-color' : ''}" style="width-max:600px; align-items:center;">Visualizza Report {i + 1}</Button>
+            </SlideItem>
+          {/each}
+        </SlideGroup>
+
 </main>
+
