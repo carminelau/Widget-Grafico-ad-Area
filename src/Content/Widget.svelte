@@ -66,6 +66,7 @@
 
     createGraphic();
 
+    //GRAFICO LOCALE
     let chartValues = [
         "0",
         "0",
@@ -84,9 +85,12 @@
         "50",
         "0",
     ];
-    //let chartLabels=["1","2","3"];
+    let chartLabels=["12:10:22","12:10:50","12:11:02","12:11:22","12:11:50","12:12:02","12:12:22","12:12:50","12:13:02","12:13:22","12:13:50","12:14:02","12:14:22","12:14:50","12:15:02","12:15:32"];
+    
+    //GRAFICO CON ROUTE
     //let chartValues = dati;
-    let chartLabels = timestamp;
+    //let chartLabels = timestamp;
+    
     let ctx;
     let chartCanvas;
 
@@ -98,7 +102,7 @@
                 labels: chartLabels,
                 datasets: [
                     {
-                        label: "Ozone",
+                        label: "Ozone [ppb]",
                         data: chartValues,
                         borderColor: "rgb(54, 162, 235)",
                         backgroundColor: "rgba(54, 162, 235,0.5)",
@@ -133,15 +137,31 @@
 
 <main id="widget-container" style={WIDGET_VISIBLE ? "" : "display: none"}>
     <canvas bind:this={chartCanvas} id="myChart" />
-    <br />
+<div class=spazio>
 
+</div>
         <SlideGroup centerActive activeClass="white-text" >
           {#each Array(3) as _, i}
             <SlideItem let:active>
-              <Button class="mr-2 ml-2 {active ? 'primary-color' : ''}" style="width-max:600px; align-items:center;">Visualizza Report {i + 1}</Button>
+              <Button size="x-large" class="mr-2 ml-2 light-blue darken-1 dark-text {active ? 'primary-color' : ''}" >Visualizza Report {i + 1}</Button>
             </SlideItem>
           {/each}
         </SlideGroup>
+<style>
+    
+ Button {
+    width: fit-content;
+    align-items:center;
+    max-width:300px;
+    min-width:100px;
+ }
+ Button:hover{
+    background-color: rgb(54, 162, 235);
+ }
 
+ .spazio{
+     height:30px;
+ }
+</style>
 </main>
 
