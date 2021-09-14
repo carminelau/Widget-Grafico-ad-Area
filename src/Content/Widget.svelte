@@ -54,7 +54,7 @@
 
                     for (let i = 0; i < data.length; i++) {
                         const array = data[i].timestamp.split(" ");
-                        //dati.push(data[i].o3);
+                        dati.push(data[i].o3);
                         timestamp.push(array[4]);
                     }
                 }
@@ -67,6 +67,7 @@
     createGraphic();
 
     //GRAFICO LOCALE
+    /*
     let chartValues = [
         "0",
         "0",
@@ -84,12 +85,12 @@
         "80",
         "50",
         "0",
-    ];
-    let chartLabels=["12:10:22","12:10:50","12:11:02","12:11:22","12:11:50","12:12:02","12:12:22","12:12:50","12:13:02","12:13:22","12:13:50","12:14:02","12:14:22","12:14:50","12:15:02","12:15:32"];
+    ];*/
+    /*let chartLabels=["12:10:22","12:10:50","12:11:02","12:11:22","12:11:50","12:12:02","12:12:22","12:12:50","12:13:02","12:13:22","12:13:50","12:14:02","12:14:22","12:14:50","12:15:02","12:15:32"];*/
     
     //GRAFICO CON ROUTE
-    //let chartValues = dati;
-    //let chartLabels = timestamp;
+    let chartValues = dati;
+    let chartLabels = timestamp;
     
     let ctx;
     let chartCanvas;
