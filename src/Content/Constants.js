@@ -9,12 +9,9 @@ export const ADMIN = false;
 
 // Widget dimension
 export const isResizable = true;
-export const WIDGET_DEFAULT_DIMENSION =  { w: 7, h: 9 };
+export const WIDGET_DEFAULT_DIMENSION =  { w: 5, h: 7 };
 export const WIDGET_MAX_DIMENSION =  { w: 10, h: 10 };
-export const WIDGET_MIN_DIMENSION =  { w: 1, h: 1 };
-
-export const CENTRALINA = false;
-export const OZONE = false;
+export const WIDGET_MIN_DIMENSION =  { w: 2, h: 4 };
 
 // Widget style
 export const BACKGROUND = "#fff";

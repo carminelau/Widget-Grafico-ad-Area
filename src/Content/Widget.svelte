@@ -13,12 +13,10 @@
     export let WIDGET_VISIBLE = false;
     /* NON MODIFICARE -> FINE */
 
-    import { SlideGroup, SlideItem } from "svelte-materialify";
-    import Carousel from "svelte-carousel";
+    import { SlideGroup, SlideItem,Chip } from "svelte-materialify";
     import chartjs from "chart.js/auto";
     import { getRelativePosition } from "chart.js/helpers";
 
-    let canvas;
     showOptions_();
 
     console.log(state);
@@ -142,9 +140,11 @@
 
 </div>
         <SlideGroup centerActive activeClass="white-text" >
-          {#each Array(3) as _, i}
+          {#each Array(6) as _, i}
             <SlideItem let:active>
-              <Button size="x-large" class="mr-2 ml-2 light-blue darken-1 dark-text {active ? 'primary-color' : ''}" >Visualizza Report {i + 1}</Button>
+                <Chip outlined class="ma-2 light-blue darken-1 white-text">Visualizza Report</Chip>
+
+              <!-- <Button size="x-large" class="mr-2 ml-2 light-blue darken-1 dark-text {active ? 'primary-color' : ''}" >Visualizza Report {i + 1}</Button> -->
             </SlideItem>
           {/each}
         </SlideGroup>
