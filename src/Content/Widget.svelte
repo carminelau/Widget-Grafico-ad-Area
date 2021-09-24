@@ -147,6 +147,8 @@
 </div>
         <SlideGroup centerActive activeClass="white-text" >
             <SlideItem let:active>
+
+                <!--
                 <Chip outlined class="ma-2 light-blue darken-1 white-text" on:click={() => saveState({sensors:state.sensor, minutes:20})}>20 Minuti</Chip>
                 <Chip outlined class="ma-2 light-blue darken-1 white-text" on:click={() => saveState({sensors:state.sensor, minutes:30})}>30 Minuti</Chip>
                 <Chip outlined class="ma-2 light-blue darken-1 white-text" on:click={() => saveState({sensors:state.sensor, minutes:40})}>40 Minuti</Chip>
@@ -163,6 +165,23 @@
                 <Chip outlined class="ma-2 light-blue darken-1 white-text" on:click={() => saveState({sensors:state.sensor, minutes:150})}>150 Minuti</Chip>
                 <Chip outlined class="ma-2 light-blue darken-1 white-text" on:click={() => saveState({sensors:state.sensor, minutes:160})}>160 Minuti</Chip>
                 <Chip outlined class="ma-2 light-blue darken-1 white-text" on:click={() => saveState({sensors:state.sensor, minutes:170})}>170 Minuti</Chip>
+                -->
+                <Button rounded class="ma-2 light-blue darken-1 white-text" on:click={() => {saveState({sensors:state.sensor, minutes:20})}}>20 Minuti</Button>
+                <Button rounded class="ma-2 light-blue darken-1 white-text" on:click={() => {saveState({sensors:state.sensor, minutes:30})}}>30 Minuti</Button>
+                <Button rounded class="ma-2 light-blue darken-1 white-text" on:click={() => {saveState({sensors:state.sensor, minutes:40})}}>40 Minuti</Button>
+                <Button rounded class="ma-2 light-blue darken-1 white-text" on:click={() => {saveState({sensors:state.sensor, minutes:50})}}>50 Minuti</Button>
+                <Button rounded class="ma-2 light-blue darken-1 white-text" on:click={() => {saveState({sensors:state.sensor, minutes:60})}}>60 Minuti</Button>
+                <Button rounded class="ma-2 light-blue darken-1 white-text" on:click={() => {saveState({sensors:state.sensor, minutes:70})}}>70 Minuti</Button>
+                <Button rounded class="ma-2 light-blue darken-1 white-text" on:click={() => {saveState({sensors:state.sensor, minutes:80})}}>80 Minuti</Button>
+                <Button rounded class="ma-2 light-blue darken-1 white-text" on:click={() => {saveState({sensors:state.sensor, minutes:90})}}>90 Minuti</Button>
+                <Button rounded class="ma-2 light-blue darken-1 white-text" on:click={() => {saveState({sensors:state.sensor, minutes:100})}}>100 Minuti</Button>
+                <Button rounded class="ma-2 light-blue darken-1 white-text" on:click={() => {saveState({sensors:state.sensor, minutes:110})}}>110 Minuti</Button>
+                <Button rounded class="ma-2 light-blue darken-1 white-text" on:click={() => {saveState({sensors:state.sensor, minutes:120})}}>120 Minuti</Button>
+                <Button rounded class="ma-2 light-blue darken-1 white-text" on:click={() => {saveState({sensors:state.sensor, minutes:130})}}>130 Minuti</Button>
+                <Button rounded class="ma-2 light-blue darken-1 white-text" on:click={() => {saveState({sensors:state.sensor, minutes:140})}}>140 Minuti</Button>
+                <Button rounded class="ma-2 light-blue darken-1 white-text" on:click={() => {saveState({sensors:state.sensor, minutes:150})}}>150 Minuti</Button>
+                <Button rounded class="ma-2 light-blue darken-1 white-text" on:click={() => {saveState({sensors:state.sensor, minutes:160})}}>160 Minuti</Button>
+                <Button rounded class="ma-2 light-blue darken-1 white-text" on:click={() => {saveState({sensors:state.sensor, minutes:170})}}>170 Minuti</Button>
             </SlideItem>
         </SlideGroup>
 <style>
