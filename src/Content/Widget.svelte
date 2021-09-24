@@ -32,6 +32,12 @@
     let dati = [];
     let timestamp = [];
 
+    function changetime(time){
+        state.minutes=time;
+        createGraphic();
+
+    }
+
     function createGraphic() {
         //showLoading("Attendere il caricamento del grafico");
 
@@ -140,13 +146,24 @@
 
 </div>
         <SlideGroup centerActive activeClass="white-text" >
-          {#each Array(6) as _, i}
             <SlideItem let:active>
-                <Chip outlined class="ma-2 light-blue darken-1 white-text">Visualizza Report</Chip>
-
-              <!-- <Button size="x-large" class="mr-2 ml-2 light-blue darken-1 dark-text {active ? 'primary-color' : ''}" >Visualizza Report {i + 1}</Button> -->
+                <Chip outlined class="ma-2 light-blue darken-1 white-text" on:click={() => saveState({sensors:state.sensor, minutes:20})}>20 Minuti</Chip>
+                <Chip outlined class="ma-2 light-blue darken-1 white-text" on:click={() => saveState({sensors:state.sensor, minutes:30})}>30 Minuti</Chip>
+                <Chip outlined class="ma-2 light-blue darken-1 white-text" on:click={() => saveState({sensors:state.sensor, minutes:40})}>40 Minuti</Chip>
+                <Chip outlined class="ma-2 light-blue darken-1 white-text" on:click={() => saveState({sensors:state.sensor, minutes:50})}>50 Minuti</Chip>
+                <Chip outlined class="ma-2 light-blue darken-1 white-text" on:click={() => saveState({sensors:state.sensor, minutes:60})}>60 Minuti</Chip>
+                <Chip outlined class="ma-2 light-blue darken-1 white-text" on:click={() => saveState({sensors:state.sensor, minutes:70})}>70 Minuti</Chip>
+                <Chip outlined class="ma-2 light-blue darken-1 white-text" on:click={() => saveState({sensors:state.sensor, minutes:80})}>80 Minuti</Chip>
+                <Chip outlined class="ma-2 light-blue darken-1 white-text" on:click={() => saveState({sensors:state.sensor, minutes:90})}>90 Minuti</Chip>
+                <Chip outlined class="ma-2 light-blue darken-1 white-text" on:click={() => saveState({sensors:state.sensor, minutes:100})}>100 Minuti</Chip>
+                <Chip outlined class="ma-2 light-blue darken-1 white-text" on:click={() => saveState({sensors:state.sensor, minutes:110})}>110 Minuti</Chip>
+                <Chip outlined class="ma-2 light-blue darken-1 white-text" on:click={() => saveState({sensors:state.sensor, minutes:120})}>120 Minuti</Chip>
+                <Chip outlined class="ma-2 light-blue darken-1 white-text" on:click={() => saveState({sensors:state.sensor, minutes:130})}>130 Minuti</Chip>
+                <Chip outlined class="ma-2 light-blue darken-1 white-text" on:click={() => saveState({sensors:state.sensor, minutes:140})}>140 Minuti</Chip>
+                <Chip outlined class="ma-2 light-blue darken-1 white-text" on:click={() => saveState({sensors:state.sensor, minutes:150})}>150 Minuti</Chip>
+                <Chip outlined class="ma-2 light-blue darken-1 white-text" on:click={() => saveState({sensors:state.sensor, minutes:160})}>160 Minuti</Chip>
+                <Chip outlined class="ma-2 light-blue darken-1 white-text" on:click={() => saveState({sensors:state.sensor, minutes:170})}>170 Minuti</Chip>
             </SlideItem>
-          {/each}
         </SlideGroup>
 <style>
     
