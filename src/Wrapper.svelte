@@ -76,15 +76,14 @@
 		return params
 	}
 
-	function saveState(state) {
-		sessionStorage.setItem("widget-state-save", JSON.stringify(state));
+	function saveState(state, reload=true) {
+		dispatch("saveState", state);
+		if(reload)
+			reloadWidget();
 	}
 
 	function getState() {
-		if(state !== null)
-			saveState(state);
-		let save = sessionStorage.getItem("widget-state-save");
-		return save ? JSON.parse(save) : save;
+		return state;
 	}
 
 	function reloadWidget() {
@@ -140,6 +139,14 @@
 			state={getState()}
 			{saveState}
 			{showOptions_}
+			on:changeOptions={() => {
+				if(showOptions){
+					dispatch("changeOptions", {
+						widget: widget,
+						state: state
+					});
+				}
+			}}
 		/>
 
 		{#if STATUS_WIDGET === LOADING}
@@ -216,6 +223,22 @@
 						<Button size="small" on:click={reloadWidget}>
 							Riavvia
 						</Button>
+
+						{#if state}
+
+							<Button class=accent size="small" on:click={() => {
+								if(showOptions){
+									dispatch("changeOptions", {
+										widget: widget,
+										state: state
+									});
+								}
+							}}>
+								Opzioni
+							</Button>
+
+						{/if}
+
 					</div>
 
 				</div>
