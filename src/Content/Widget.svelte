@@ -71,7 +71,7 @@
     createGraphic();
 
     //GRAFICO LOCALE
-    /*
+    
     let chartValues = [
         "0",
         "0",
@@ -89,12 +89,30 @@
         "80",
         "50",
         "0",
-    ];*/
-    /*let chartLabels=["12:10:22","12:10:50","12:11:02","12:11:22","12:11:50","12:12:02","12:12:22","12:12:50","12:13:02","12:13:22","12:13:50","12:14:02","12:14:22","12:14:50","12:15:02","12:15:32"];*/
+    ];
+    let chartValues2 = [
+        "100",
+        "30",
+        "20",
+        "50",
+        "70",
+        "90",
+        "10",
+        "200",
+        "330",
+        "400",
+        "570",
+        "650",
+        "720",
+        "80",
+        "90",
+        "0",
+    ];
+    let chartLabels=["12:10:22","12:10:50","12:11:02","12:11:22","12:11:50","12:12:02","12:12:22","12:12:50","12:13:02","12:13:22","12:13:50","12:14:02","12:14:22","12:14:50","12:15:02","12:15:32"];
     
     //GRAFICO CON ROUTE
-    let chartValues = dati;
-    let chartLabels = timestamp;
+    // let chartValues = dati;
+    // let chartLabels = timestamp;
     
     let ctx;
     let chartCanvas;
@@ -105,6 +123,11 @@
             type: "line",
             data: {
                 labels: chartLabels,
+                interaction: {
+      mode: 'index',
+      intersect: false,
+    },
+    stacked: false,
                 datasets: [
                     {
                         label: "Ozone [ppb]",
@@ -112,10 +135,20 @@
                         borderColor: "rgb(54, 162, 235)",
                         backgroundColor: "rgba(54, 162, 235,0.5)",
                         fill: true,
+                        yAxisID: 'y',
+                    },
+                    {
+                        label: "Ozone2 [ppb]",
+                        data: chartValues2,
+                        borderColor: "rgb(44, 15, 235)",
+                        backgroundColor: "rgba(54, 162, 18,0.5)",
+                        fill: true,
+                        yAxisID: 'y1',
                     },
                 ],
             },
             options: {
+                responsive: true,
                 plugins: {
                     filler: {
                         propagate: false,
@@ -136,6 +169,21 @@
                     },
                 },
             },
+            scales: {
+      y: {
+        type: 'linear',
+        display: true,
+        position: 'left',
+      },
+      y1: {
+        type: 'linear',
+        display: true,
+        position: 'right',
+        grid: {
+          drawOnChartArea: false, // only want the grid lines for one axis to show up
+        },
+      }
+    }
         });
     });
 </script>
